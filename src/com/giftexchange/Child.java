@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * constructor, a toString method, and getters and setters for the locally initialized variables.
  */
 public class Child extends Person {
+  // Create local list variable called itemsTheyLike
   ArrayList<String> itemsTheyLike = new ArrayList<>();
 
   /** No-arg constructor for the Child class */
@@ -28,7 +29,7 @@ public class Child extends Person {
     this.itemsTheyLike = itemsTheyLike;
   }
 
- /**
+  /**
    * The local class toString method
    *
    * @return
