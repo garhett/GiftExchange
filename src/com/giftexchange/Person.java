@@ -1,26 +1,23 @@
 package com.giftexchange;
 
 /**
- * This is the Parent class for the Adult and Child class, it is called Person.
- * This class contains:
- * Private nameString, genderString, and int age.
- * Public nameString, genderString, and int age.
- * toString method
- * And all the getters and setters for Name, Gender, Age.
+ * This is the Parent class for the Adult and Child class, it is called Person. This class contains:
+ * Private nameString, genderString, and int age. Public nameString, genderString, and int age.
+ * toString method And all the getters and setters for Name, Gender, Age.
  */
 
-/**
- * This is the private name, gender, and age class
- */
+/** This is the private name, gender, and age class */
 public class Person {
   private String name = "";
   private String gender = "";
   private int age = 0;
 
+  /** No arg-constructor for Person class */
   public Person() {}
 
   /**
    * Custom constructor for the Person class to define items for the custom persons object.
+   *
    * @param name
    * @param gender
    * @param age
@@ -33,19 +30,22 @@ public class Person {
 
   /**
    * This is the toString method for persons
+   *
    * @return
    */
   public String toString() {
     return "";
   }
 
-  /**\
+  /**
    * This is the getter and setter for name, gender, and age
+   *
    * @return
    */
 
   /**
    * Gettig for name
+   *
    * @return
    */
   public String getName() {
@@ -54,6 +54,7 @@ public class Person {
 
   /**
    * Setter for name
+   *
    * @param name
    */
   public void setName(String name) {
@@ -62,6 +63,7 @@ public class Person {
 
   /**
    * Getter for gender
+   *
    * @return
    */
   public String getGender() {
@@ -70,6 +72,7 @@ public class Person {
 
   /**
    * Setter for gender
+   *
    * @param gender
    */
   public void setGender(String gender) {
@@ -78,6 +81,7 @@ public class Person {
 
   /**
    * Getter for age
+   *
    * @return
    */
   public int getAge() {
@@ -86,6 +90,7 @@ public class Person {
 
   /**
    * setter for age
+   *
    * @param age
    */
   public void setAge(int age) {
