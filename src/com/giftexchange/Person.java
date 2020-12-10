@@ -3,20 +3,21 @@ package com.giftexchange;
 /**
  * This is the Parent class for the Adult and Child class, it is called Person. This class contains:
  * Private nameString, genderString, and int age. Public nameString, genderString, and int age.
- * toString method And all the getters and setters for Name, Gender, Age.
+ * toString method And all the getters and setters for Name, Gender, Age.  - Written by Alissa
  */
 
-/** This is the private name, gender, and age class */
+/** This is the private name, gender, and age class - Written by Alissa */
 public class Person {
   private String name = "";
   private String gender = "";
   private int age = 0;
 
-  /** No arg-constructor for Person class */
+  /** No arg-constructor for Person class - Written by Alissa */
   public Person() {}
 
   /**
-   * Custom constructor for the Person class to define items for the custom persons object.
+   * Custom constructor for the Person class to define items for the custom persons object. -
+   * Written by Alissa
    *
    * @param name
    * @param gender
@@ -29,22 +30,22 @@ public class Person {
   }
 
   /**
-   * This is the toString method for persons
+   * This is the toString method for persons - Written by Alissa
    *
    * @return
    */
   public String toString() {
-    return "";
+    return ""; // TODO Placeholder, create actual toString code in final program build.
   }
 
   /**
-   * This is the getter and setter for name, gender, and age
+   * This is the getter and setter for name, gender, and age - Written by Alissa
    *
    * @return
    */
 
   /**
-   * Gettig for name
+   * Gettig for name - Written by Alissa
    *
    * @return
    */
@@ -53,7 +54,7 @@ public class Person {
   }
 
   /**
-   * Setter for name
+   * Setter for name - Written by Alissa
    *
    * @param name
    */
@@ -62,7 +63,7 @@ public class Person {
   }
 
   /**
-   * Getter for gender
+   * Getter for gender - Written by Alissa
    *
    * @return
    */
@@ -71,7 +72,7 @@ public class Person {
   }
 
   /**
-   * Setter for gender
+   * Setter for gender - Written by Alissa
    *
    * @param gender
    */
@@ -80,7 +81,7 @@ public class Person {
   }
 
   /**
-   * Getter for age
+   * Getter for age - Written by Alissa
    *
    * @return
    */
@@ -89,7 +90,7 @@ public class Person {
   }
 
   /**
-   * setter for age
+   * setter for age - Written by Alissa
    *
    * @param age
    */

@@ -4,20 +4,22 @@ import java.util.ArrayList;
 
 /**
  * This class of name Child creates a Child object, with a default no-arg constructor, a custom
- * constructor, a toString method, and getters and setters for the locally initialized variables.
+ * constructor, a toString method, and getters and setters for the locally initialized variables. -
+ * Written by Garhett
  */
 public class Child extends Person {
-  // Create local list variable called itemsTheyLike
+  // Create local list variable called itemsTheyLike - Written by Garhett
   ArrayList<String> itemsTheyLike = new ArrayList<>();
 
-  /** No-arg constructor for the Child class */
+  /** No-arg constructor for the Child class - Written by Garhett */
   public Child() {
     super();
-    itemsTheyLike.set(0, "");
+    itemsTheyLike.add("");
   }
 
   /**
-   * Custom constructor for the Child class to define items for the custom child object.
+   * Custom constructor for the Child class to define items for the custom child object. - Written
+   * by Garhett
    *
    * @param name
    * @param gender
@@ -30,16 +32,16 @@ public class Child extends Person {
   }
 
   /**
-   * The local class toString method
+   * The local class toString method - Written by Garhett
    *
    * @return
    */
   public String toString() {
-    return "";
+    return ""; // TODO Placeholder, create actual toString code in final program build.
   }
 
   /**
-   * The getter for the local itemsTheyLike variable
+   * The getter for the local itemsTheyLike variable - Written by Garhett
    *
    * @return
    */
@@ -48,7 +50,7 @@ public class Child extends Person {
   }
 
   /**
-   * The setter for the local itemsTheyLike variable
+   * The setter for the local itemsTheyLike variable - Written by Garhett
    *
    * @param itemsTheyLike
    */
