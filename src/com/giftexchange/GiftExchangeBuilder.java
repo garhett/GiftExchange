@@ -11,7 +11,5 @@ public class GiftExchangeBuilder {
     ArrayList<String> dislikedPeople = new ArrayList<>();
     ArrayList<String> likedItems = new ArrayList<>();
     ArrayList<Person> personList = new ArrayList<>();
-
-
   }
 }

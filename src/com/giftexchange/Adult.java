@@ -6,6 +6,7 @@ public class Adult extends Person {
   ArrayList<String> peopleTheyDislike = new ArrayList<>();
 
   public Adult() {
+    super();
     peopleTheyDislike.set(0, "");
   }
 
