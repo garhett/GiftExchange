@@ -20,7 +20,7 @@ public class Person {
   public Person() {}
 
   /**
-   *
+   * Custom constructor for the Person class to define items for the custom persons object.
    * @param name
    * @param gender
    * @param age
