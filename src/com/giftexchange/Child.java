@@ -28,7 +28,7 @@ public class Child extends Person {
     this.itemsTheyLike = itemsTheyLike;
   }
 
-  /**
+ /**
    * The local class toString method
    *
    * @return
