@@ -1,19 +1,18 @@
 package com.giftexchange;
 
-import java.util.ArrayList;
-
 /**
  * This is the adult class. It is here to create an adult object. This class contains a no-arg con
- * and a custom con. And a toString method and the getter and setters for people they dislike.  - Written by Alissa
+ * and a custom con. And a toString method and the getter and setters for people they dislike. -
+ * Written by Alissa
  */
 public class Adult extends Person {
   // Created the local list of the people they dislike - Written by Alissa
-  ArrayList<String> peopleTheyDislike = new ArrayList<>();
+  String blacklistedPerson = "";
 
-  /** This is the no arg con for the adult class - Written by Alissa*/
+  /** This is the no arg con for the adult class - Written by Alissa */
   public Adult() {
     super();
-    peopleTheyDislike.add("");
+    blacklistedPerson = "Well, I love my whole family equally.";
   }
 
   /**
@@ -22,11 +21,11 @@ public class Adult extends Person {
    * @param name
    * @param gender
    * @param age
-   * @param peopleTheyDislike
+   * @param blacklistedPerson
    */
-  public Adult(String name, String gender, int age, ArrayList<String> peopleTheyDislike) {
+  public Adult(String name, String gender, int age, String blacklistedPerson) {
     super(name, gender, age);
-    this.peopleTheyDislike = peopleTheyDislike;
+    this.blacklistedPerson = blacklistedPerson;
   }
 
   /**
@@ -43,16 +42,16 @@ public class Adult extends Person {
    *
    * @return
    */
-  public ArrayList<String> getPeopleTheyDislike() {
-    return peopleTheyDislike;
+  public String getBlacklistedPerson() {
+    return blacklistedPerson;
   }
 
   /**
    * This is the setter for people they dislike for the Adult class. - Written by Alissa
    *
-   * @param peopleTheyDislike
+   * @param blacklistedPerson
    */
-  public void setPeopleTheyDislike(ArrayList<String> peopleTheyDislike) {
-    this.peopleTheyDislike = peopleTheyDislike;
+  public void setBlacklistedPerson(String blacklistedPerson) {
+    this.blacklistedPerson = blacklistedPerson;
   }
 }

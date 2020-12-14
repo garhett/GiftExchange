@@ -1,6 +1,7 @@
 package com.giftexchange;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Name: Garhett Anderson & Alissa Corona. Course: CIT-260. File(s): GiftExchangeBuilder.java,
@@ -18,14 +19,42 @@ public class GiftExchangeBuilder {
    * @param args
    */
   public static void main(String[] args) {
-    // Create each of the local variables for the person's characteristics. - Written by Garhett
-    String name = "";
-    String gender = "";
-    int age = 0;
+    Scanner in = new Scanner(System.in);
 
     // Create each local list to be used and assigned for various uses. - Written by Garhett
-    ArrayList<String> dislikedPeople = new ArrayList<>();
-    ArrayList<String> likedItems = new ArrayList<>();
-    ArrayList<Person> personList = new ArrayList<>();
+    ArrayList<Person> adultList = new ArrayList<>();
+    ArrayList<Person> childList = new ArrayList<>();
+
+    System.out.println("Welcome to Gift Exchange Builder!");
+    System.out.print("How many family members would you like to add to a gift exchange report?: ");
+    final int FAMILY_MEMBER_COUNT = in.nextInt();
+    for (int i = 0; i < FAMILY_MEMBER_COUNT; i++) {
+      in.nextLine();
+      int y = i + 1;
+      System.out.println("\nFamily member #" + y + "\n_______________");
+      System.out.print("Enter a name: ");
+      String name = in.nextLine();
+      System.out.print("Enter " + name + "'s gender: ");
+      String gender = in.nextLine();
+      System.out.print("Enter " + name + "'s age: ");
+      int age = in.nextInt();
+      if (age < 18) {
+        System.out.print("Enter a present " + name + " wants for Christmas: ");
+        String presentTheyWant = in.nextLine();
+        childList.add(new Child(name, gender, age, presentTheyWant));
+      } else {
+        System.out.print("Does " + name + " dislike anyone in the family? (yes or no): ");
+        String doTheyDislikeAnyone = in.nextLine();
+        String blacklistedPerson = "None";
+        if (doTheyDislikeAnyone.equalsIgnoreCase("Yes")) {
+          System.out.print(
+              "Enter name of disliked family member. (This person WILL NOT exchange gifts with "
+                  + name
+                  + ".: ");
+          blacklistedPerson = in.nextLine();
+        }
+        adultList.add(new Adult(name, gender, age, blacklistedPerson));
+      }
+    }
   }
 }

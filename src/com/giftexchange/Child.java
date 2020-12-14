@@ -1,20 +1,18 @@
 package com.giftexchange;
 
-import java.util.ArrayList;
-
 /**
  * This class of name Child creates a Child object, with a default no-arg constructor, a custom
  * constructor, a toString method, and getters and setters for the locally initialized variables. -
  * Written by Garhett
  */
 public class Child extends Person {
-  // Create local list variable called itemsTheyLike - Written by Garhett
-  ArrayList<String> itemsTheyLike = new ArrayList<>();
+  // Create local String variable - Written by Garhett
+  String presentTheyWant = "";
 
   /** No-arg constructor for the Child class - Written by Garhett */
   public Child() {
     super();
-    itemsTheyLike.add("");
+    presentTheyWant = "Gee, I don't know.";
   }
 
   /**
@@ -24,11 +22,11 @@ public class Child extends Person {
    * @param name
    * @param gender
    * @param age
-   * @param itemsTheyLike
+   * @param presentTheyWant
    */
-  public Child(String name, String gender, int age, ArrayList<String> itemsTheyLike) {
+  public Child(String name, String gender, int age, String presentTheyWant) {
     super(name, gender, age);
-    this.itemsTheyLike = itemsTheyLike;
+    this.presentTheyWant = presentTheyWant;
   }
 
   /**
@@ -45,16 +43,16 @@ public class Child extends Person {
    *
    * @return
    */
-  public ArrayList<String> getItemsTheyLike() {
-    return itemsTheyLike;
+  public String getPresentTheyWant() {
+    return presentTheyWant;
   }
 
   /**
    * The setter for the local itemsTheyLike variable - Written by Garhett
    *
-   * @param itemsTheyLike
+   * @param presentTheyWant
    */
-  public void setItemsTheyLike(ArrayList<String> itemsTheyLike) {
-    this.itemsTheyLike = itemsTheyLike;
+  public void setPresentTheyWant(String presentTheyWant) {
+    this.presentTheyWant = presentTheyWant;
   }
 }
