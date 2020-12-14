@@ -19,42 +19,40 @@ public class GiftExchangeBuilder {
    * @param args
    */
   public static void main(String[] args) {
-    Scanner in = new Scanner(System.in);
+    // import scanner and list for Person
+    Scanner keyboard = new Scanner(System.in);
+    ArrayList<Person> g = new ArrayList<>();
+    //tell the user what the program does
+    System.out.println("Family gift exchanges are a holiday tradition in many families.\n" +
+            "The user will have the ability to generate a random report if they need to create a new gift exchange list for this year");
+    //get user input for adult list. Name, gender, and age. Also who they want to black list,
+    //If they do not want to blacklist anyone have them enter 'none'.
+
+    //get user input for child list. Name, gender, and age. Also what they like.
+    //if they do not have a preference they can enter 'none'.
+
+    //menu style: user enter 1 to show adult list
+    //            user enter 2 to edit adult list. Add more people.
+    //            user enter 3 to show child list
+    //            user enter 4 to edit child list Add more people.
+
+    System.out.println("Enter 1 to show adult list. \n" +
+                       "Enter 2 to edit adult list, add more people. \n" +
+                       "Enter 3 to show child list. \n" +
+                       "Enter 4 to edit child list, add more people. \n" +
+                       "Enter 5 if finished with listsL");
+
+
+
+    // Create each of the local variables for the person's characteristics. - Written by Garhett
+
+    String name = "";
+    String gender = "";
+    int age = 0;
 
     // Create each local list to be used and assigned for various uses. - Written by Garhett
-    ArrayList<Person> adultList = new ArrayList<>();
-    ArrayList<Person> childList = new ArrayList<>();
-
-    System.out.println("Welcome to Gift Exchange Builder!");
-    System.out.print("How many family members would you like to add to a gift exchange report?: ");
-    final int FAMILY_MEMBER_COUNT = in.nextInt();
-    for (int i = 0; i < FAMILY_MEMBER_COUNT; i++) {
-      in.nextLine();
-      int y = i + 1;
-      System.out.println("\nFamily member #" + y + "\n_______________");
-      System.out.print("Enter a name: ");
-      String name = in.nextLine();
-      System.out.print("Enter " + name + "'s gender: ");
-      String gender = in.nextLine();
-      System.out.print("Enter " + name + "'s age: ");
-      int age = in.nextInt();
-      if (age < 18) {
-        System.out.print("Enter a present " + name + " wants for Christmas: ");
-        String presentTheyWant = in.nextLine();
-        childList.add(new Child(name, gender, age, presentTheyWant));
-      } else {
-        System.out.print("Does " + name + " dislike anyone in the family? (yes or no): ");
-        String doTheyDislikeAnyone = in.nextLine();
-        String blacklistedPerson = "None";
-        if (doTheyDislikeAnyone.equalsIgnoreCase("Yes")) {
-          System.out.print(
-              "Enter name of disliked family member. (This person WILL NOT exchange gifts with "
-                  + name
-                  + ".: ");
-          blacklistedPerson = in.nextLine();
-        }
-        adultList.add(new Adult(name, gender, age, blacklistedPerson));
-      }
-    }
+    ArrayList<String> dislikedPeople = new ArrayList<>();
+    ArrayList<String> likedItems = new ArrayList<>();
+    ArrayList<Person> personList = new ArrayList<>();
   }
 }
