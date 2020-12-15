@@ -52,7 +52,7 @@ System.out.println("Please enter adult name, gender, and age you want to include
                        "Enter 4 to edit child list, add more people. \n" +
                        "Enter 5 if finished with list");
 
-
+        System.out.println("hello ");
       // Generate random list for adult
     Random generate = new Random();
     String[] Adult= {};
