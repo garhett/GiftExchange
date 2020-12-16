@@ -12,7 +12,7 @@ public class Child extends Person {
   /** No-arg constructor for the Child class - Written by Garhett */
   public Child() {
     super();
-    presentTheyWant = "Gee, I don't know.";
+    presentTheyWant = "nothing";
   }
 
   /**
@@ -34,8 +34,9 @@ public class Child extends Person {
    *
    * @return
    */
+  @Override
   public String toString() {
-    return super.toString();
+    return super.toString().replace(')', ',') + " wants " + presentTheyWant + ")";
   }
 
   /**

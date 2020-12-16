@@ -12,7 +12,7 @@ public class Adult extends Person {
   /** This is the no arg con for the adult class - Written by Alissa */
   public Adult() {
     super();
-    blacklistedPerson = "Well, I love my whole family equally.";
+    blacklistedPerson = "nobody";
   }
 
   /**
@@ -33,8 +33,9 @@ public class Adult extends Person {
    *
    * @return
    */
+  @Override
   public String toString() {
-    return super.toString() + "***" + blacklistedPerson + "***";
+    return super.toString().replace(')', ',') + " dislikes " + blacklistedPerson + ")";
   }
 
   /**

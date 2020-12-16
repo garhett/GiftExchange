@@ -34,7 +34,14 @@ public class Person {
    * @return
    */
   public String toString() {
-    return name + " " + gender + " " + age + " ";
+    return name.substring(0, 1).toUpperCase()
+        + name.substring(1)
+        + ": ("
+        + gender.substring(0, 1).toUpperCase()
+        + gender.substring(1)
+        + ", "
+        + age
+        + ")";
   }
 
   /**
