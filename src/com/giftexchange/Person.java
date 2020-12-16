@@ -34,7 +34,7 @@ public class Person {
    * @return
    */
   public String toString() {
-    return "";
+    return name + " " + gender + " " + age + " ";
   }
 
   /**

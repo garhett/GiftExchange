@@ -35,7 +35,7 @@ public class Child extends Person {
    * @return
    */
   public String toString() {
-    return ""; // TODO Placeholder, create actual toString code in final program build.
+    return super.toString() + presentTheyWant;
   }
 
   /**

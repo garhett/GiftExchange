@@ -42,8 +42,8 @@ public class GiftExchangeBuilder {
     /* Below methods is used for testing purposes ONLY.
     Uncomment this methods and answer "0" to family member total input to start testing. */
 
-    createAdultTestObjects();
-    createChildTestObjects();
+//    createAdultTestObjects();
+//    createChildTestObjects();
     System.out.println("WELCOME TO THE GIFT EXCHANGE BUILDER!\n");
     System.out.println(
         "Family gift exchanges are a holiday tradition in many families.\nThe user will have the ability to generate a random report if they need to \ncreate a new gift exchange list for this year.\n");
@@ -77,10 +77,11 @@ public class GiftExchangeBuilder {
         adultList.add(new Adult(name, gender, age, blacklistedPerson));
       }
     }
-    // TODO figure out why it is updating the file modified date, but the body is blank?
+
     try (PrintWriter fileInput = new PrintWriter(childListLocalFile)) {
       for (Person j : childList) {
         fileInput.println(j);
+
 
       }
     }
@@ -91,11 +92,18 @@ public class GiftExchangeBuilder {
       }
     }
     // Allow for better UX to signify the file writing process was successful
+
+    //Lists for adult and child for read to file
     System.out.println("\nSaving... COMPLETE");
-    for(Person c : childList ){
+    for(int i = 0; i < childList.toArray().length; i++){
+      System.out.println(childList.get(i));
+
+
 
     }
-    for(Person a : adultList ){
+    System.out.println();
+    for(int i = 0; i < adultList.toArray().length; i++){
+      System.out.println(adultList.get(i));
 
     }
 
