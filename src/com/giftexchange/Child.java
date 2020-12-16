@@ -7,7 +7,7 @@ package com.giftexchange;
  */
 public class Child extends Person {
   // Create local String variable - Written by Garhett
-  private String presentTheyWant = "";
+  private String presentTheyWant;
 
   /** No-arg constructor for the Child class - Written by Garhett */
   public Child() {
@@ -35,7 +35,7 @@ public class Child extends Person {
    * @return
    */
   public String toString() {
-    return super.toString() + presentTheyWant;
+    return super.toString();
   }
 
   /**
@@ -54,6 +54,5 @@ public class Child extends Person {
    */
   public void setPresentTheyWant(String presentTheyWant) {
     this.presentTheyWant = presentTheyWant;
-
   }
 }

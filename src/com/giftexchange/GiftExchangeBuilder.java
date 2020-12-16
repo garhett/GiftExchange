@@ -3,6 +3,8 @@ package com.giftexchange;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -15,8 +17,10 @@ import java.util.Scanner;
  */
 public class GiftExchangeBuilder {
   static ArrayList<Person> childList = new ArrayList<>();
-  static ArrayList<Person> adultList = new ArrayList<>();
+  static ArrayList<Person> childList2 = new ArrayList<>();
 
+  static ArrayList<Adult> adultList = new ArrayList<>();
+  static ArrayList<Adult> adultList2 = new ArrayList<>();
 
   public static void main(String[] args) throws FileNotFoundException {
 
@@ -38,12 +42,11 @@ public class GiftExchangeBuilder {
     String adultListLocalFile = "Adult_List.txt";
     String childListLocalFile = "Child_List.txt";
 
-
     /* Below methods is used for testing purposes ONLY.
-    Uncomment this methods and answer "0" to family member total input to start testing. */
+    Uncomment these methods and answer "0" to family member total input to start testing. */
+    createAdultTestObjects();
+    createChildTestObjects();
 
-//    createAdultTestObjects();
-//    createChildTestObjects();
     System.out.println("WELCOME TO THE GIFT EXCHANGE BUILDER!\n");
     System.out.println(
         "Family gift exchanges are a holiday tradition in many families.\nThe user will have the ability to generate a random report if they need to \ncreate a new gift exchange list for this year.\n");
@@ -81,42 +84,40 @@ public class GiftExchangeBuilder {
     try (PrintWriter fileInput = new PrintWriter(childListLocalFile)) {
       for (Person j : childList) {
         fileInput.println(j);
-
-
       }
     }
     try (PrintWriter fileInput = new PrintWriter(adultListLocalFile)) {
       for (Person j : adultList) {
         fileInput.println(j);
-
       }
     }
     // Allow for better UX to signify the file writing process was successful
-
-    //Lists for adult and child for read to file
     System.out.println("\nSaving... COMPLETE");
-    for(int i = 0; i < childList.toArray().length; i++){
-      System.out.println(childList.get(i));
 
-
-
+    childList2 = (ArrayList<Person>) childList.clone();
+    Collections.shuffle(childList);
+    Collections.shuffle(childList2);
+    for (int i = 0; i < childList.toArray().length; i++) {
+      // TODO add if to make sure a person doesn't give to themselves, then put line below in else
+      System.out.println(childList.get(i) + "   GIVES TO    " + childList2.get(i));
     }
+
+    // New line for better formatting
     System.out.println();
-    for(int i = 0; i < adultList.toArray().length; i++){
-      System.out.println(adultList.get(i));
 
+    adultList2 = (ArrayList<Adult>) adultList.clone();
+    Collections.shuffle(adultList);
+    Collections.shuffle(adultList2);
+    for (int i = 0; i < adultList.toArray().length; i++) {
+      String adultsBlacklistedPerson = adultList.get(i).getBlacklistedPerson();
+      String adultsName = adultList2.get(i).getName();
+      if (adultsBlacklistedPerson.equalsIgnoreCase(adultsName)) {
+        adultList2.subList(i, adultList2.toArray().length - 1);
+        // TODO add else/if to make sure a person doesn't give to themselves
+      } else {
+        System.out.println(adultList.get(i) + "   GIVES TO    " + adultList2.get(i));
+      }
     }
-
-
-    //        Generate random list for adult
-    //        Random generate = new Random();
-    //        String[] Adult= {};
-    //        System.out.println("Adult List:  " +  Adult;[generate.nextInt()];
-    //
-    //        Generate random list for child
-    //        Random generate = new Random();
-    //        String[] Child = {};
-    //        System.out.println("Child List:  " +  Child;[generate.nextInt()];
   }
 
   /**
@@ -126,18 +127,12 @@ public class GiftExchangeBuilder {
    */
   public static void createChildTestObjects() {
     childList.add(new Child("Fred", "male", 11, "yoyo"));
-
     childList.add(new Child("Tim", "male", 10, "cars"));
-
     childList.add(new Child("Ally", "female", 9, "dolls"));
-
     childList.add(new Child("Jake", "male", 15, "playdoe"));
-
     childList.add(new Child("Timmy", "male", 5, "basketball"));
-
     childList.add(new Child("Lexy", "female", 13, "bike"));
     childList.add(new Child("Darin", "male", 17, "monster truck"));
-
   }
 
   /**
@@ -146,20 +141,14 @@ public class GiftExchangeBuilder {
    * and make sure to answer "0" to number of family members to input for most accurate testing.
    */
   public static void createAdultTestObjects() {
-
     adultList.add(new Adult("Sally", "female", 34, "None"));
-
     adultList.add(new Adult("Jill", "female", 65, "None"));
-
     adultList.add(new Adult("Sam", "male", 61, "Ivy"));
-
     adultList.add(new Adult("Bob", "male", 43, "None"));
     adultList.add(new Adult("Ivy", "female", 21, "Sally"));
-
     adultList.add(new Adult("Oscar", "male", 65, "None"));
     adultList.add(new Adult("Susan", "female", 34, "None"));
     adultList.add(new Adult("Oliver", "male", 76, "Oscar"));
-
     adultList.add(new Adult("Rosanne", "female", 18, "Susan"));
     adultList.add(new Adult("Lucy", "female", 50, "None"));
   }
