@@ -7,7 +7,7 @@ package com.giftexchange;
  */
 public class Adult extends Person {
   // Created the local list of the people they dislike - Written by Alissa
-  String blacklistedPerson = "";
+ private String blacklistedPerson = "";
 
   /** This is the no arg con for the adult class - Written by Alissa */
   public Adult() {
