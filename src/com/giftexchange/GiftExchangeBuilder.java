@@ -37,6 +37,10 @@ public class GiftExchangeBuilder {
     File adultFile = new File(adultListLocalFile);
     File childFile = new File(childListLocalFile);
 
+    boolean isListDeletedAndNewListCreated = false;
+
+    System.out.println("\nWELCOME TO THE GIFT EXCHANGE BUILDER!\n");
+
     if (adultFile.exists() && childFile.exists()) {
       System.out.println("Adult_List.txt and Child_List.txt files detected!");
       System.out.print(
@@ -46,32 +50,46 @@ public class GiftExchangeBuilder {
         // Read in Adult data and create new child objects to create gift exchange report
         try (Scanner inFromChildFile = new Scanner(childFile)) {
           while (inFromChildFile.hasNextLine()) {
-
-            }
+            String name = inFromChildFile.next().trim();
+            String gender = inFromChildFile.next().trim();
+            int age = inFromChildFile.nextInt();
+            String presentTheyWant = inFromChildFile.nextLine().trim();
+            childList.add(new Child(name, gender, age, presentTheyWant));
           }
+        }
         // Read in Adult data and create new child objects to create gift exchange report
         try (Scanner inFromAdultFile = new Scanner(adultFile)) {
           while (inFromAdultFile.hasNextLine()) {
-
+            String name = inFromAdultFile.next().trim();
+            String gender = inFromAdultFile.next().trim();
+            int age = inFromAdultFile.nextInt();
+            String blacklistedPerson = inFromAdultFile.nextLine().trim();
+            adultList.add(new Adult(name, gender, age, blacklistedPerson));
           }
-        }
-
         }
         createExchangeReportAndSaveToFile();
         System.exit(0);
+      } else if (response.equalsIgnoreCase("b")) {
+        isListDeletedAndNewListCreated = true;
+        adultFile.delete();
+        childFile.delete();
       }
     }
 
     /* Below methods are used for test purposes ONLY.
     Uncomment these methods and answer "0" to family member total input to start testing. */
-    createAdultTestObjects();
-    createChildTestObjects();
+    //    createAdultTestObjects();
+    //    createChildTestObjects();
     /* End test case methods */
 
-    System.out.println("\nWELCOME TO THE GIFT EXCHANGE BUILDER!\n");
     // TODO don't allow a gift exchange less than 2 people.
-    System.out.println(
-        "Family gift exchanges are a holiday tradition in many families.\nThe user will have the ability to generate a random report if they need to \ncreate a new gift exchange list for this year.\n");
+    if (!isListDeletedAndNewListCreated) {
+      System.out.println(
+          "Family gift exchanges are a holiday tradition in many families.\nThe user will have the ability to generate a random report if they need to \ncreate a new gift exchange list for this year.\n");
+    }
+    if (isListDeletedAndNewListCreated) {
+      System.out.println();
+    }
     System.out.print("How many family members would you like to add to a gift exchange report?: ");
     final int FAMILY_MEMBER_COUNT = in.nextInt();
     for (int i = 0; i < FAMILY_MEMBER_COUNT; i++) {
@@ -153,7 +171,7 @@ public class GiftExchangeBuilder {
     childList2 = (ArrayList<Child>) childList.clone();
     Collections.shuffle(childList);
     Collections.shuffle(childList2);
-    System.out.println("***CHILDREN'S GIFT EXCHANGE***");
+    System.out.println("\n***CHILDREN'S GIFT EXCHANGE***");
     for (int i = 0; i < childList.toArray().length; i++) {
       String child1 = childList.get(i).getName();
       String child2 = childList2.get(i).getName();
@@ -206,5 +224,6 @@ public class GiftExchangeBuilder {
     // Allow for better UX to signify the file writing process was successful
     System.out.println("\nSaving list of children to Child_List.txt... COMPLETE");
     System.out.println("Saving list of adults to Adult_List.txt... COMPLETE");
+    System.out.println("\nMERRY CHRISTMAS!");
   }
 }
