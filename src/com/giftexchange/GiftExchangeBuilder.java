@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -51,8 +52,21 @@ public class GiftExchangeBuilder {
       String name = in.nextLine();
       System.out.print("Enter " + name + "'s gender: ");
       String gender = in.nextLine();
-      System.out.print("Enter " + name + "'s age: ");
-      int age = in.nextInt();
+      int age = 0;
+      boolean isAgeProblem = false;
+      do {
+
+        isAgeProblem = false;
+        System.out.print("Enter " + name + "'s age: ");
+        try {
+          age = in.nextInt();
+        } catch (InputMismatchException e) {
+          System.out.println("Error: Please enter a number");
+          isAgeProblem = true;
+          in.nextLine();
+        }
+      }while(isAgeProblem);
+
       if (age < 18) {
         System.out.print("Enter a present " + name + " wants for Christmas: ");
         String presentTheyWant = scanner.nextLine();
@@ -70,6 +84,7 @@ public class GiftExchangeBuilder {
         }
         adultList.add(new Adult(name, gender, age, blacklistedPerson));
       }
+
     }
 
     childList2 = (ArrayList<Child>) childList.clone();
