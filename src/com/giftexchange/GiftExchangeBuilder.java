@@ -22,22 +22,27 @@ public class GiftExchangeBuilder {
   static String adultListLocalFile = "Adult_List.txt";
   static String childListLocalFile = "Child_List.txt";
   public static void main(String[] args) throws FileNotFoundException {
-    // TODO make sure to look at instructors feedback on last week's assignment to know of
     // everything that we need to have for our program. Then look at assignment requirement so we
     // don't miss anything there either.
+    //import scanners
     Scanner in = new Scanner(System.in);
     Scanner scanner = new Scanner(System.in);
     File adultFile = new File(adultListLocalFile);
     File childFile = new File(childListLocalFile);
+    //system out print the program and what it does
     boolean isListDeletedAndNewListCreated = false;
+
     System.out.println("\nWELCOME TO THE GIFT EXCHANGE BUILDER!\n");
     if (adultFile.exists() && childFile.exists()) {
+      //read text to file
       System.out.println("Adult_List.txt and Child_List.txt files detected!");
       System.out.print(
+              //menu style with file. Either create report or delete file
               "Do you want to create a gift exchange report of the current lists,\nor delete the lists and start over? (a = create report. b = delete lists): ");
       String response = in.nextLine();
       if (response.equalsIgnoreCase("a")) {
         // Read in Adult data and create new child objects to create gift exchange report
+        // use a scanner to fine Childfile on computer and out print it
         try (Scanner inFromChildFile = new Scanner(childFile)) {
           while (inFromChildFile.hasNextLine()) {
             String name = inFromChildFile.next().trim();
@@ -48,6 +53,7 @@ public class GiftExchangeBuilder {
           }
         }
         // Read in Adult data and create new child objects to create gift exchange report
+        // use a scanner to fine Adultfile on computer and out print it
         try (Scanner inFromAdultFile = new Scanner(adultFile)) {
           while (inFromAdultFile.hasNextLine()) {
             String name = inFromAdultFile.next().trim();
@@ -57,6 +63,7 @@ public class GiftExchangeBuilder {
             adultList.add(new Adult(name, gender, age, blacklistedPerson));
           }
         }
+        //if user enters b program will delete file from computer
         createExchangeReportAndSaveToFile();
         System.exit(0);
       } else if (response.equalsIgnoreCase("b")) {
@@ -70,7 +77,6 @@ public class GiftExchangeBuilder {
     //    createAdultTestObjects();
     //    createChildTestObjects();
     /* End test case methods */
-    // TODO don't allow a gift exchange less than 2 people.
     if (!isListDeletedAndNewListCreated) {
       System.out.println(
               "Family gift exchanges are a holiday tradition in many families.\nThe user will have the ability to generate a random report if they need to \ncreate a new gift exchange list for this year.\n");
@@ -79,16 +85,43 @@ public class GiftExchangeBuilder {
       System.out.println();
     }
     System.out.print("How many family members would you like to add to a gift exchange report?: ");
-    final int FAMILY_MEMBER_COUNT = in.nextInt();
-    for (int i = 0; i < FAMILY_MEMBER_COUNT; i++) {
+    int familyMemberCount  = in.nextInt();
+    while(familyMemberCount > 50 || familyMemberCount < 4) {
+      System.out.print("Invalid Input: Group total must be 4 - 50 people. Please enter a new number: ");
+      familyMemberCount = in.nextInt();
+    }
+    //User input for familyMemberCount
+    //Limit names 4-50
+    for (int i = 0; i < familyMemberCount; i++) {
       in.nextLine();
       int y = i + 1;
       System.out.println("\nFamily member #" + y + "\n_______________");
-      System.out.print("Enter a name: ");
-
+      //Get user input for first name only. give error if last name is also entered.
+      System.out.print("Enter First name only: ");
       String name = in.nextLine();
+      //do loop if last name is entered
+      while(name.contains(" ")){
+        System.out.print("Invalid Input: Last names are not allowed. Please enter First name only: ");
+        name = in.nextLine();
+
+        /**
+         * do while loop for name- Written by Alissa
+         */
+      }
+      //get user input of gener. Give error message if genders 'Male' or 'female' are not written
       System.out.print("Enter " + name + "'s gender: ");
       String gender = in.nextLine();
+      //do loop for only male and female input
+      while(!gender.equalsIgnoreCase("Male")&& !gender.equalsIgnoreCase("Female"))
+      {
+        System.out.print("Invalid Input: Please enter either 'Male' or 'Female': ");
+                gender = in.nextLine();
+      }
+      /**
+       * do while loop for gender- Written by Alissa
+       */
+      // get user input for age.
+      // try and catch if letter is entered instead of int
       int age = 0;
       boolean isAgeProblem = false;
       do {
@@ -102,6 +135,13 @@ public class GiftExchangeBuilder {
           in.nextLine();
         }
       } while (isAgeProblem);
+
+      /**
+       * try and catch exception for age Written by- Alissa
+       */
+      //filter adult and child class by age
+      //adults can black list
+      //children can ask what they want for christmas
       if (age < 18) {
         System.out.print("Enter a present " + name + " wants for Christmas: ");
         String presentTheyWant = scanner.nextLine();
