@@ -1,5 +1,6 @@
 package com.giftexchange;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -22,6 +23,9 @@ public class GiftExchangeBuilder {
   static ArrayList<Adult> adultList = new ArrayList<>();
   static ArrayList<Adult> adultList2 = new ArrayList<>();
 
+  static String adultListLocalFile = "Adult_List.txt";
+  static String childListLocalFile = "Child_List.txt";
+
   public static void main(String[] args) throws FileNotFoundException {
     // TODO make sure to look at instructors feedback on last week's assignment to know of
     // everything that we need to have for our program. Then look at assignment requirement so we
@@ -29,8 +33,34 @@ public class GiftExchangeBuilder {
 
     Scanner in = new Scanner(System.in);
     Scanner scanner = new Scanner(System.in);
-    String adultListLocalFile = "Adult_List.txt";
-    String childListLocalFile = "Child_List.txt";
+
+    File adultFile = new File(adultListLocalFile);
+    File childFile = new File(childListLocalFile);
+
+    if (adultFile.exists() && childFile.exists()) {
+      System.out.println("Adult_List.txt and Child_List.txt files detected!");
+      System.out.print(
+          "Do you want to create a gift exchange report of the current lists,\nor delete the lists and start over? (a = create report. b = delete lists): ");
+      String response = in.nextLine();
+      if (response.equalsIgnoreCase("a")) {
+        // Read in Adult data and create new child objects to create gift exchange report
+        try (Scanner inFromChildFile = new Scanner(childFile)) {
+          while (inFromChildFile.hasNextLine()) {
+
+            }
+          }
+        // Read in Adult data and create new child objects to create gift exchange report
+        try (Scanner inFromAdultFile = new Scanner(adultFile)) {
+          while (inFromAdultFile.hasNextLine()) {
+
+          }
+        }
+
+        }
+        createExchangeReportAndSaveToFile();
+        System.exit(0);
+      }
+    }
 
     /* Below methods are used for test purposes ONLY.
     Uncomment these methods and answer "0" to family member total input to start testing. */
@@ -55,7 +85,6 @@ public class GiftExchangeBuilder {
       int age = 0;
       boolean isAgeProblem = false;
       do {
-
         isAgeProblem = false;
         System.out.print("Enter " + name + "'s age: ");
         try {
@@ -65,8 +94,7 @@ public class GiftExchangeBuilder {
           isAgeProblem = true;
           in.nextLine();
         }
-      }while(isAgeProblem);
-
+      } while (isAgeProblem);
       if (age < 18) {
         System.out.print("Enter a present " + name + " wants for Christmas: ");
         String presentTheyWant = scanner.nextLine();
@@ -84,9 +112,44 @@ public class GiftExchangeBuilder {
         }
         adultList.add(new Adult(name, gender, age, blacklistedPerson));
       }
-
     }
+    createExchangeReportAndSaveToFile();
+  }
 
+  /**
+   * Method is used for testing purposes only to bypass the lengthy object-creation process that
+   * will take place in the final build of the program. Uncomment method's reference in main to use,
+   * and make sure to answer "0" to number of family members to input for most accurate testing.
+   */
+  public static void createChildTestObjects() {
+    childList.add(new Child("Fred", "male", 11, "yoyo"));
+    childList.add(new Child("Tim", "male", 10, "cars"));
+    childList.add(new Child("Ally", "female", 9, "dolls"));
+    childList.add(new Child("Jake", "male", 15, "playdoe"));
+    childList.add(new Child("Timmy", "male", 5, "basketball"));
+    childList.add(new Child("Lexy", "female", 13, "bike"));
+    childList.add(new Child("Darin", "male", 17, "monster truck"));
+  }
+
+  /**
+   * Method is used for testing purposes only to bypass the lengthy object-creation process that
+   * will take place in the final build of the program. Uncomment method's reference in main to use,
+   * and make sure to answer "0" to number of family members to input for most accurate testing.
+   */
+  public static void createAdultTestObjects() {
+    adultList.add(new Adult("Sally", "female", 34, "nobody"));
+    adultList.add(new Adult("Jill", "female", 65, "nobody"));
+    adultList.add(new Adult("Sam", "male", 61, "Ivy"));
+    adultList.add(new Adult("Bob", "male", 43, "nobody"));
+    adultList.add(new Adult("Ivy", "female", 21, "Sally"));
+    adultList.add(new Adult("Oscar", "male", 65, "nobody"));
+    adultList.add(new Adult("Susan", "female", 34, "nobody"));
+    adultList.add(new Adult("Oliver", "male", 76, "Oscar"));
+    adultList.add(new Adult("Rosanne", "female", 18, "Susan"));
+    adultList.add(new Adult("Lucy", "female", 50, "nobody"));
+  }
+
+  public static void createExchangeReportAndSaveToFile() throws FileNotFoundException {
     childList2 = (ArrayList<Child>) childList.clone();
     Collections.shuffle(childList);
     Collections.shuffle(childList2);
@@ -143,38 +206,5 @@ public class GiftExchangeBuilder {
     // Allow for better UX to signify the file writing process was successful
     System.out.println("\nSaving list of children to Child_List.txt... COMPLETE");
     System.out.println("Saving list of adults to Adult_List.txt... COMPLETE");
-  }
-
-  /**
-   * Method is used for testing purposes only to bypass the lengthy object-creation process that
-   * will take place in the final build of the program. Uncomment method's reference in main to use,
-   * and make sure to answer "0" to number of family members to input for most accurate testing.
-   */
-  public static void createChildTestObjects() {
-    childList.add(new Child("Fred", "male", 11, "yoyo"));
-    childList.add(new Child("Tim", "male", 10, "cars"));
-    childList.add(new Child("Ally", "female", 9, "dolls"));
-    childList.add(new Child("Jake", "male", 15, "playdoe"));
-    childList.add(new Child("Timmy", "male", 5, "basketball"));
-    childList.add(new Child("Lexy", "female", 13, "bike"));
-    childList.add(new Child("Darin", "male", 17, "monster truck"));
-  }
-
-  /**
-   * Method is used for testing purposes only to bypass the lengthy object-creation process that
-   * will take place in the final build of the program. Uncomment method's reference in main to use,
-   * and make sure to answer "0" to number of family members to input for most accurate testing.
-   */
-  public static void createAdultTestObjects() {
-    adultList.add(new Adult("Sally", "female", 34, "nobody"));
-    adultList.add(new Adult("Jill", "female", 65, "nobody"));
-    adultList.add(new Adult("Sam", "male", 61, "Ivy"));
-    adultList.add(new Adult("Bob", "male", 43, "nobody"));
-    adultList.add(new Adult("Ivy", "female", 21, "Sally"));
-    adultList.add(new Adult("Oscar", "male", 65, "nobody"));
-    adultList.add(new Adult("Susan", "female", 34, "nobody"));
-    adultList.add(new Adult("Oliver", "male", 76, "Oscar"));
-    adultList.add(new Adult("Rosanne", "female", 18, "Susan"));
-    adultList.add(new Adult("Lucy", "female", 50, "nobody"));
   }
 }
