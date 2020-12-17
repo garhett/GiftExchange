@@ -203,39 +203,12 @@ public class GiftExchangeBuilder {
   }
 
   /**
-   * Method is used for testing purposes only to bypass the lengthy object-creation process that
-   * will take place in the final build of the program. Uncomment method's reference in main to use,
-   * and make sure to answer "0" to number of family members to input for most accurate testing.
+   * This method encapsulates the global ArrayLists as defined in the main class, creates a random
+   * report for each of the adult and child lists, and then saves the lists to two separate txt
+   * files to the local directory where the program file is contained.
+   *
+   * @throws FileNotFoundException
    */
-  public static void createChildTestObjects() {
-    childList.add(new Child("Fred", "male", 11, "yoyo"));
-    childList.add(new Child("Tim", "male", 10, "cars"));
-    childList.add(new Child("Ally", "female", 9, "dolls"));
-    childList.add(new Child("Jake", "male", 15, "playdoe"));
-    childList.add(new Child("Timmy", "male", 5, "basketball"));
-    childList.add(new Child("Lexy", "female", 13, "bike"));
-    childList.add(new Child("Darin", "male", 17, "monster truck"));
-  }
-
-  /**
-   * Method is used for testing purposes only to bypass the lengthy object-creation process that
-   * will take place in the final build of the program. Uncomment method's reference in main to use,
-   * and make sure to answer "0" to number of family members to input for most accurate testing.
-   */
-  public static void createAdultTestObjects() {
-    adultList.add(new Adult("Sally", "female", 34, "nobody"));
-    adultList.add(new Adult("Jill", "female", 65, "nobody"));
-    adultList.add(new Adult("Sam", "male", 61, "Ivy"));
-    adultList.add(new Adult("Bob", "male", 43, "nobody"));
-    adultList.add(new Adult("Ivy", "female", 21, "Sally"));
-    adultList.add(new Adult("Oscar", "male", 65, "nobody"));
-    adultList.add(new Adult("Susan", "female", 34, "nobody"));
-    adultList.add(new Adult("Oliver", "male", 76, "Oscar"));
-    adultList.add(new Adult("Rosanne", "female", 18, "Susan"));
-    adultList.add(new Adult("Lucy", "female", 50, "nobody"));
-  }
-
-  // TODO finish javadoc and comments.
   public static void createExchangeReportAndSaveToFile() throws FileNotFoundException {
     // Import scanner for user later in the method
     Scanner in = new Scanner(System.in);
@@ -328,5 +301,38 @@ public class GiftExchangeBuilder {
     } else {
       System.out.println("\nMERRY CHRISTMAS!");
     }
+  }
+
+  /**
+   * Method is used for testing purposes only to bypass the lengthy object-creation process that
+   * will take place in the final build of the program. Uncomment method's reference in main to use,
+   * and make sure to answer "0" to number of family members to input for most accurate testing.
+   */
+  public static void createChildTestObjects() {
+    childList.add(new Child("Fred", "male", 11, "yoyo"));
+    childList.add(new Child("Tim", "male", 10, "cars"));
+    childList.add(new Child("Ally", "female", 9, "dolls"));
+    childList.add(new Child("Jake", "male", 15, "playdoe"));
+    childList.add(new Child("Timmy", "male", 5, "basketball"));
+    childList.add(new Child("Lexy", "female", 13, "bike"));
+    childList.add(new Child("Darin", "male", 17, "monster truck"));
+  }
+
+  /**
+   * Method is used for testing purposes only to bypass the lengthy object-creation process that
+   * will take place in the final build of the program. Uncomment method's reference in main to use,
+   * and make sure to answer "0" to number of family members to input for most accurate testing.
+   */
+  public static void createAdultTestObjects() {
+    adultList.add(new Adult("Sally", "female", 34, "nobody"));
+    adultList.add(new Adult("Jill", "female", 65, "nobody"));
+    adultList.add(new Adult("Sam", "male", 61, "Ivy"));
+    adultList.add(new Adult("Bob", "male", 43, "nobody"));
+    adultList.add(new Adult("Ivy", "female", 21, "Sally"));
+    adultList.add(new Adult("Oscar", "male", 65, "nobody"));
+    adultList.add(new Adult("Susan", "female", 34, "nobody"));
+    adultList.add(new Adult("Oliver", "male", 76, "Oscar"));
+    adultList.add(new Adult("Rosanne", "female", 18, "Susan"));
+    adultList.add(new Adult("Lucy", "female", 50, "nobody"));
   }
 }
