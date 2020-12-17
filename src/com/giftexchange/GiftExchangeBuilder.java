@@ -1,5 +1,4 @@
 package com.giftexchange;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -7,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 /**
  * Name: Garhett Anderson & Alissa Corona. Course: CIT-260. File(s): GiftExchangeBuilder.java,
  * Child.java, Adult.java, Person.java. Date: 12/9/2020. About: This program enables the user to
@@ -19,32 +17,24 @@ import java.util.Scanner;
 public class GiftExchangeBuilder {
   static ArrayList<Child> childList = new ArrayList<>();
   static ArrayList<Child> childList2 = new ArrayList<>();
-
   static ArrayList<Adult> adultList = new ArrayList<>();
   static ArrayList<Adult> adultList2 = new ArrayList<>();
-
   static String adultListLocalFile = "Adult_List.txt";
   static String childListLocalFile = "Child_List.txt";
-
   public static void main(String[] args) throws FileNotFoundException {
     // TODO make sure to look at instructors feedback on last week's assignment to know of
     // everything that we need to have for our program. Then look at assignment requirement so we
     // don't miss anything there either.
-
     Scanner in = new Scanner(System.in);
     Scanner scanner = new Scanner(System.in);
-
     File adultFile = new File(adultListLocalFile);
     File childFile = new File(childListLocalFile);
-
     boolean isListDeletedAndNewListCreated = false;
-
     System.out.println("\nWELCOME TO THE GIFT EXCHANGE BUILDER!\n");
-
     if (adultFile.exists() && childFile.exists()) {
       System.out.println("Adult_List.txt and Child_List.txt files detected!");
       System.out.print(
-          "Do you want to create a gift exchange report of the current lists,\nor delete the lists and start over? (a = create report. b = delete lists): ");
+              "Do you want to create a gift exchange report of the current lists,\nor delete the lists and start over? (a = create report. b = delete lists): ");
       String response = in.nextLine();
       if (response.equalsIgnoreCase("a")) {
         // Read in Adult data and create new child objects to create gift exchange report
@@ -75,17 +65,15 @@ public class GiftExchangeBuilder {
         childFile.delete();
       }
     }
-
     /* Below methods are used for test purposes ONLY.
     Uncomment these methods and answer "0" to family member total input to start testing. */
     //    createAdultTestObjects();
     //    createChildTestObjects();
     /* End test case methods */
-
     // TODO don't allow a gift exchange less than 2 people.
     if (!isListDeletedAndNewListCreated) {
       System.out.println(
-          "Family gift exchanges are a holiday tradition in many families.\nThe user will have the ability to generate a random report if they need to \ncreate a new gift exchange list for this year.\n");
+              "Family gift exchanges are a holiday tradition in many families.\nThe user will have the ability to generate a random report if they need to \ncreate a new gift exchange list for this year.\n");
     }
     if (isListDeletedAndNewListCreated) {
       System.out.println();
@@ -97,6 +85,7 @@ public class GiftExchangeBuilder {
       int y = i + 1;
       System.out.println("\nFamily member #" + y + "\n_______________");
       System.out.print("Enter a name: ");
+
       String name = in.nextLine();
       System.out.print("Enter " + name + "'s gender: ");
       String gender = in.nextLine();
@@ -123,9 +112,9 @@ public class GiftExchangeBuilder {
         String blacklistedPerson = "Nobody";
         if (doTheyDislikeAnyone.equalsIgnoreCase("Yes")) {
           System.out.print(
-              "Enter name of disliked adult. (This person will NOT receive a gift from "
-                  + name
-                  + ".): ");
+                  "Enter name of disliked adult. (This person will NOT receive a gift from "
+                          + name
+                          + ".): ");
           blacklistedPerson = scanner.nextLine();
         }
         adultList.add(new Adult(name, gender, age, blacklistedPerson));
@@ -133,7 +122,6 @@ public class GiftExchangeBuilder {
     }
     createExchangeReportAndSaveToFile();
   }
-
   /**
    * Method is used for testing purposes only to bypass the lengthy object-creation process that
    * will take place in the final build of the program. Uncomment method's reference in main to use,
@@ -148,7 +136,6 @@ public class GiftExchangeBuilder {
     childList.add(new Child("Lexy", "female", 13, "bike"));
     childList.add(new Child("Darin", "male", 17, "monster truck"));
   }
-
   /**
    * Method is used for testing purposes only to bypass the lengthy object-creation process that
    * will take place in the final build of the program. Uncomment method's reference in main to use,
@@ -166,7 +153,6 @@ public class GiftExchangeBuilder {
     adultList.add(new Adult("Rosanne", "female", 18, "Susan"));
     adultList.add(new Adult("Lucy", "female", 50, "nobody"));
   }
-
   public static void createExchangeReportAndSaveToFile() throws FileNotFoundException {
     childList2 = (ArrayList<Child>) childList.clone();
     Collections.shuffle(childList);
@@ -182,10 +168,8 @@ public class GiftExchangeBuilder {
       }
       System.out.printf("%-50s %-10s %s%n", childList.get(i), "GIVES TO", childList2.get(i));
     }
-
     // New line for better formatting
     System.out.println("***END OF CHILDREN'S GIFT EXCHANGE***\n");
-
     adultList2 = (ArrayList<Adult>) adultList.clone();
     Collections.shuffle(adultList);
     Collections.shuffle(adultList2);
@@ -196,7 +180,7 @@ public class GiftExchangeBuilder {
       // If person gets blacklisted person, or if they get themselves, send the second list item to
       // the end of the list
       if (adultsBlacklistedPerson.equalsIgnoreCase(adultsName)
-          || adultList.get(i).getName().equalsIgnoreCase(adultList2.get(i).getName())) {
+              || adultList.get(i).getName().equalsIgnoreCase(adultList2.get(i).getName())) {
         Adult item = adultList2.get(i);
         adultList2.remove(i);
         adultList2.add(item);
@@ -204,7 +188,6 @@ public class GiftExchangeBuilder {
       System.out.printf("%-50s %-10s %s%n", adultList.get(i), "GIVES TO", adultList2.get(i));
     }
     System.out.println("***END OF ADULT'S GIFT EXCHANGE***");
-
     try (PrintWriter fileInput = new PrintWriter(childListLocalFile)) {
       for (int i = 0; i < childList.toArray().length; i++) {
         fileInput.print(childList.get(i).getName() + " ");

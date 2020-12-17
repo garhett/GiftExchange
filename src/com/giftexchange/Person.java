@@ -4,6 +4,7 @@ package com.giftexchange;
  * This is the Parent class for the Adult and Child class, it is called Person. This class contains:
  * Private nameString, genderString, and int age. Public nameString, genderString, and int age.
  * toString method And all the getters and setters for Name, Gender, Age.
+ * Written by Both
  */
 
 /** This is the private name, gender, and age class */
@@ -60,7 +61,7 @@ public class Person {
   }
 
   /**
-   * Setter for name
+   * Setter for name for person class - Written by Both
    *
    * @param name
    */
@@ -69,7 +70,7 @@ public class Person {
   }
 
   /**
-   * Getter for gender
+   * Getter for gender for person class - Written by Both
    *
    * @return
    */
@@ -78,7 +79,7 @@ public class Person {
   }
 
   /**
-   * Setter for gender
+   * Setter for gender for person class - Written by Both
    *
    * @param gender
    */
@@ -87,7 +88,7 @@ public class Person {
   }
 
   /**
-   * Getter for age
+   * Getter for age for person class - Written by Both
    *
    * @return
    */
@@ -96,7 +97,7 @@ public class Person {
   }
 
   /**
-   * setter for age
+   * Setter for age for person class - Written by Both
    *
    * @param age
    */
