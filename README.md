@@ -1,1 +1,1 @@
-# GiftExchange
+Tired of picking names from a hat for the Christmas family party? You're in luck, because you can store all your friends and family in a local text file that will be used to randomly assign each person their gift exchange partner. Merry Christmas.
